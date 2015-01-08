@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, td {
+    border: 1px solid black;
+}
+
+
+.hidden{
+  display: none;
+}
+
+.unhidden{
+  display:block;
+}
+
+#popup{
+  border: 1px solid black;
+  background-color: red;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+
+
+}
+
+</style>
+</head>
+<body>
+
+<p>Click the button to alert the innerHTML of the first cell (td element with index 0) in the table's first row.</p>
+
+<table id="myTable">
+  <tr onClick="myFunction(0)">
+    <td>Row1 cell1</td>
+    <td>Row1 cell2</td>
+  </tr>
+  <tr onClick="myFunction(1)">
+    <td>Row2 cell1</td>
+    <td>Row2 cell2</td>
+  </tr>
+  <tr onClick="myFunction(2)">
+    <td>Row3 cell1</td>
+    <td>Row3 cell2</td>
+  </tr>
+</table>
+<br>
+<div id='invisibleDiv'><div id = "popup" class= "hidden"></div></div>
+<button onclick="myFunction()">Try it</button>
+
+<script>
+
+
+function myFunction(rowClicked) {
+    document.getElementById('popup').style.display = 'block'
+
+    var result = "";
+    lengthCols = document.getElementById("myTable").rows[0].cells.length;
+
+    for(var z = 0; z < lengthCols; z++){
+         var cellInfo = document.getElementById("myTable").rows[rowClicked].cells[z].innerHTML;
+         result += "Row: " + rowClicked + "  Column: " + z + " holds: " + cellInfo + "<br>";
+    }
+
+    document.getElementById("popup").innerHTML = result;
+
+    var newdiv = document.createElement('div');
+    var textnode = document.createTextNode("")
+
+    document.getElementById('invisibleDiv').onclick = function() {
+    document.getElementById('popup').style.display = 'none';
+    }
+}
+
+</script>
+
+</body>
+</html>

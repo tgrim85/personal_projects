@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, td {
+    border: 1px solid black;
+}
+
+
+.hidden{
+  display: none;
+}
+
+.unhidden{
+  display:block;
+}
+
+#popup{
+  border: 1px solid black;
+  background-color: red;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+
+
+}
+
+</style>
+</head>
+<body>
+
+<p>Click the button to alert the innerHTML of the first cell (td element with index 0) in the table's first row.</p>
+
+<table id="myTable">
+  <tr>
+    <td>Row1 cell1</td>
+    <td>Row1 cell2</td>
+  </tr>
+  <tr>
+    <td>Row2 cell1</td>
+    <td>Row2 cell2</td>
+  </tr>
+  <tr>
+    <td>Row3 cell1</td>
+    <td>Row3 cell2</td>
+  </tr>
+</table>
+<br>
+
+<script>
+
+
+var rs = document.getElementsByTagName("tr");
+var clen = rs[0].cells.length;
+
+for(var i = 0; i < rs.length; i++) {
+  rs[i].addEventListener("click", function () {
+    console.log(this);
+    myFunction(this);
+  });
+}
+
+function myFunction(r) {
+    var newDiv = document.createElement('div');
+    newDiv.id = 'popup';
+    document.body.appendChild(newDiv)
+
+    document.getElementById('popup').style.display = 'block'
+
+    var result = "";
+
+    for(var z = 0; z < clen; z++){
+         var cellInfo = r.cells[z].innerHTML;
+         result += "Row: " + r.rowIndex + "  Column: " + z + " holds: " + cellInfo + "<br><br>";
+    }
+
+    document.getElementById("popup").innerHTML = result;
+
+    var btn = document.createElement("BUTTON");
+    btn.id = 'button';
+    var t = document.createTextNode("Close");
+    btn.appendChild(t);
+    newDiv.appendChild(btn);
+
+    btn.addEventListener("click", function() {
+      document.body.removeChild(newDiv)
+    });
+
+}
+
+
+</script>
+
+</body>
+</html>
