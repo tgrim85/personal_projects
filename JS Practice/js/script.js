@@ -32,7 +32,7 @@ function popupFunction(r) {
          result += "Row: " + r.rowIndex + "  Column: " + z + ":  " + cellInfo + "<br><br>";
     }
 
-    document.getElementById("popup").innerHTML = result;
+    popupDiv.innerHTML = result;
 
     //Append a button element to the popup div so that the user can close the div
     var btn = document.createElement("BUTTON");
