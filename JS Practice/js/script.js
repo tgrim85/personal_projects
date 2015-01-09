@@ -2,14 +2,14 @@
 var rows = document.getElementsByTagName("tr");
 var columns = rows[0].cells.length;
 
-//Make each row clickable, and call popupFunction with the row data for the row clicked.
+//Make each row clickable, and call createPopup with the row data for the row clicked.
 for(var i = 0; i < rows.length; i++) {
   rows[i].addEventListener("click", function () {
-    popupFunction(this);
+    createPopup(this);
   });
 }
 
-function popupFunction(r) {
+function createPopup(r) {
 
     // Create an overlay div that will sit behind the popup so that a user cannot click
     // anything until the popup is closed
