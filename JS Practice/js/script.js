@@ -1,15 +1,15 @@
 // Get number of rows and columns
-var rs = document.getElementsByTagName("tr");
-var clen = rs[0].cells.length;
+var rows = document.getElementsByTagName("tr");
+var clen = rows[0].cells.length;
 
-//Make each row clickable, and call myFunction with the row data for the row clicked.
-for(var i = 0; i < rs.length; i++) {
-  rs[i].addEventListener("click", function () {
-    myFunction(this);
+//Make each row clickable, and call popupFunction with the row data for the row clicked.
+for(var i = 0; i < rows.length; i++) {
+  rows[i].addEventListener("click", function () {
+    popupFunction(this);
   });
 }
 
-function myFunction(r) {
+function popupFunction(r) {
 
     // Create an overlay div that will sit behind the popup so that a user cannot click
     // anything until the popup is closed
@@ -17,9 +17,9 @@ function myFunction(r) {
     overlayDiv.id = 'overlay';
     document.body.appendChild(overlayDiv);
 
-    var newDiv = document.createElement('div');
-    newDiv.id = 'popup';
-    document.body.appendChild(newDiv);
+    var popupDiv = document.createElement('div');
+    popupDiv.id = 'popup';
+    document.body.appendChild(popupDiv);
 
     document.getElementById('popup').style.display = 'block';
 
@@ -39,12 +39,12 @@ function myFunction(r) {
     btn.id = 'button';
     var t = document.createTextNode("Close");
     btn.appendChild(t);
-    newDiv.appendChild(btn);
+    popupDiv.appendChild(btn);
 
     //Remove the overlaydiv and the popupdiv after the close button has been clicked
     btn.addEventListener("click", function() {
       document.body.removeChild(overlayDiv);
-      document.body.removeChild(newDiv);
+      document.body.removeChild(popupDiv);
     });
 
 }
