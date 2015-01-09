@@ -1,6 +1,6 @@
 // Get number of rows and columns
 var rows = document.getElementsByTagName("tr");
-var clen = rows[0].cells.length;
+var columns = rows[0].cells.length;
 
 //Make each row clickable, and call popupFunction with the row data for the row clicked.
 for(var i = 0; i < rows.length; i++) {
@@ -17,6 +17,7 @@ function popupFunction(r) {
     overlayDiv.id = 'overlay';
     document.body.appendChild(overlayDiv);
 
+    //Create a popupDiv that will display a button to close itself and the results of the row
     var popupDiv = document.createElement('div');
     popupDiv.id = 'popup';
     document.body.appendChild(popupDiv);
@@ -24,12 +25,11 @@ function popupFunction(r) {
     document.getElementById('popup').style.display = 'block';
 
     //Get the cell information from each cell of the table and add it to the popup div
-
     var result = "";
 
-    for(var z = 0; z < clen; z++){
-         var cellInfo = r.cells[z].innerHTML;
-         result += "Row: " + r.rowIndex + "  Column: " + z + ":  " + cellInfo + "<br><br>";
+    for(var i = 0; i < columns; i++){
+         var cellInfo = r.cells[i].innerHTML;
+         result += "Row: " + r.rowIndex + "  Column: " + i + ":  " + cellInfo + "<br><br>";
     }
 
     popupDiv.innerHTML = result;
