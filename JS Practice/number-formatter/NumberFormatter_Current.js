@@ -1,4 +1,5 @@
 NumberFormatter = {};
+var lol = 0;
 
 (function () {
     NumberFormatter.intToCsv = function (number, precision) {
@@ -105,3 +106,16 @@ NumberFormatter = {};
     };
 }());
 
+function z() {
+    console.log('starting');
+    var start = Date.now();
+
+    var a = [];
+
+    for (var i = 0; i < lol; ++i) {
+        a.push(NumberFormatter.intToCsv(i));
+    }
+
+    console.log('done');
+    console.log(Date.now() - start);
+}
